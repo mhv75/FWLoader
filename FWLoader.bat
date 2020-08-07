@@ -56,34 +56,67 @@ if /i %LangSelect%==0 goto LangSelect
 :DeviceSelect
 cls
 call :Logo
-set device=NONE
-set deviceBip=Huami Amazfit Bip
-set deviceBipS=Huami Amazfit Bip S
-set deviceGTR47=Huami Amazfit GTR 47
-set deviceTRex=Huami Amazfit T-Rex
-set deviceMB4=Xiaomi Mi (Smart) Band 4
-set deviceMB5=Xiaomi Mi (Smart) Band 5
+set deviceTitle=NONE
+set deviceTitleBip=Huami Amazfit Bip
+set deviceTitleBipS=Huami Amazfit Bip S
+set deviceTitleGTR47=Huami Amazfit GTR 47
+set deviceTitleTRex=Huami Amazfit T-Rex
+set deviceTitleMB4=Xiaomi Mi Smart Band 4
+set deviceTitleMB5=Xiaomi Mi Smart Band 5
+
+set deviceFolder=NONE
+set deviceFolderBip=Huami_Amazfit_Bip
+set deviceFolderBipS=Huami_Amazfit_Bip_S
+set deviceFolderGTR47=Huami_Amazfit_GTR_47
+set deviceFolderTRex=Huami_Amazfit_T-Rex
+set deviceFolderMB4=Xiaomi_Mi_Smart_Band_4
+set deviceFolderMB5=Xiaomi_Mi_Smart_Band_5
 echo  %SelectDeviceText%
 @echo.
-echo  1) %deviceBip%
-echo  2) %deviceBipS%
-echo  3) %deviceGTR47%
-echo  4) %deviceTRex%
-echo  5) %deviceMB4%
-echo  6) %deviceMB5%
+echo  1) %deviceTitleBip%
+echo  2) %deviceTitleBipS%
+echo  3) %deviceTitleGTR47%
+echo  4) %deviceTitleTRex%
+echo  5) %deviceTitleMB4%
+echo  6) %deviceTitleMB5%
 @echo.
 call :Separator
 echo  (B) - %BackText%   (Enter) - %UpdateText%   (A) - %AboutButtonText%
 call :Separator
 @echo.
 set DeviceSelect=0
-set /p DeviceSelect=" %InputText% " && @echo.
-if /i %DeviceSelect%==1 set device=%deviceBip% && goto BipFileSelect
-if /i %DeviceSelect%==2 set device=%deviceBipS% && goto BipSFileSelect
-if /i %DeviceSelect%==3 set device=%deviceGTR47% && goto GTR47FileSelect
-if /i %DeviceSelect%==4 set device=%deviceTRex% && goto TRexFileSelect
-if /i %DeviceSelect%==5 set device=%deviceMB4% && goto MB4FileSelect
-if /i %DeviceSelect%==6 set device=%deviceMB5% && goto MB5FileSelect
+set /p DeviceSelect=" %InputText% "
+@echo.
+if /i %DeviceSelect%==1 (
+set deviceTitle=%deviceTitleBip%
+set deviceFolder=%deviceFolderBip%
+goto BipFileSelect
+)
+if /i %DeviceSelect%==2 (
+set deviceTitle=%deviceTitleBipS%
+set deviceFolder=%deviceFolderBipS%
+goto BipSFileSelect
+)
+if /i %DeviceSelect%==3 (
+set deviceTitle=%deviceTitleGTR47%
+set deviceFolder=%deviceFolderGTR47%
+goto GTR47FileSelect
+)
+if /i %DeviceSelect%==4 (
+set deviceTitle=%deviceTitleTRex%
+set deviceFolder=%deviceFolderTRex%
+goto TRexFileSelect
+)
+if /i %DeviceSelect%==5 (
+set deviceTitle=%deviceTitleMB4%
+set deviceFolder=%deviceFolderMB4%
+goto MB4FileSelect
+)
+if /i %DeviceSelect%==6 (
+set deviceTitle=%deviceTitleMB5%
+set deviceFolder=%deviceFolderMB5%
+goto MB5FileSelect
+)
 if /i %DeviceSelect%==A call :About && goto DeviceSelect
 if /i %DeviceSelect%==0 goto DeviceSelect
 if /i %DeviceSelect%==B goto LangSelect
@@ -92,7 +125,7 @@ goto DeviceSelect
 :BipFileSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 @echo.
@@ -120,7 +153,7 @@ goto MirrorSelect
 :BipSFileSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 @echo.
@@ -150,7 +183,7 @@ goto MirrorSelect
 :GTR47FileSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 @echo.
@@ -204,7 +237,7 @@ goto MirrorSelect
 cls
 call :Logo
 @echo.
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 echo  1) 0.0.1.77
@@ -240,7 +273,7 @@ goto MirrorSelect
 :MB4FileSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 @echo.
@@ -461,7 +494,7 @@ goto MirrorSelect
 :MB5FileSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 @echo.
 echo  %SelectFirmwareText%
 @echo.
@@ -498,7 +531,7 @@ goto MirrorSelect
 :MirrorSelect
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
@@ -555,7 +588,7 @@ goto MirrorSelect
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
@@ -600,7 +633,7 @@ goto DeviceSelect
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
@@ -617,7 +650,7 @@ call :Separator
 set customPCpath=0
 @echo.
 set /p customPCpath="%InputText% "
-if /i %customPCpath%==1 md %PCpath% && goto Download_FW
+if /i %customPCpath%==1 md %PCpath%& md %PCpath%\%deviceFolder%& md "%PCpath%\%deviceFolder%\%FolderName%"& goto Download_FW
 if /i %customPCpath%==2 goto choosePCfolder
 if /i %customPCpath%==A call :About && goto customPCpath
 if /i %customPCpath%==B goto choosePCfolder
@@ -627,7 +660,7 @@ if /i %customPCpath%==0 goto customPCpath
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 echo  %TitleFontText% %ft%
@@ -644,33 +677,32 @@ call :Separator
 set defaultPCpath=0
 @echo.
 set /p defaultPCpath="%InputText% "
-if /i %defaultPCpath%==1 md %PCpath% && goto Download_FW
+if /i %defaultPCpath%==1 md %PCpath%& md %PCpath%\%deviceFolder%& md "%PCpath%\%deviceFolder%\%FolderName%"& goto Download_FW
 if /i %defaultPCpath%==2 goto choosePCfolder
 if /i %defaultPCpath%==A call :About && goto defaultPCpath
 if /i %defaultPCpath%==B goto choosePCfolder
 if /i %defaultPCpath%==0 goto defaultPCpath
 
 :Download_FW
-md %PCpath%\%FolderName%
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
 echo  %TitleMirrorText% %mirror%
-echo  %TitlePathText% %PCpath%\%FolderName%
+echo  %TitlePathText% %PCpath%\%deviceFolder%\%FolderName%
 ping -n 3 127.0.0.1 > NUL
 @echo.
 echo  %DownloadingFWText%
-curl %mirror%%fw% -o %PCpath%\%FolderName%\%fw%
-if exist %PCpath%\%FolderName%\%fw% (
+curl %mirror%%fw% -o %PCpath%\%deviceFolder%\%FolderName%\%fw%
+if exist %PCpath%\%deviceFolder%\%FolderName%\%fw% (
 	color 2F
 	ping -n 3 127.0.0.1 > NUL
 	goto Download_RES
 )
-if not exist %PCpath%\%FolderName%\%fw% (
+if not exist %PCpath%\%deviceFolder%\%FolderName%\%fw% (
 	color 4F
 	echo  %FailedText%
 	@echo.
@@ -691,22 +723,22 @@ if not exist %PCpath%\%FolderName%\%fw% (
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
 echo  %TitleMirrorText% %mirror%
-echo  %TitlePathText% %PCpath%\%FolderName%
+echo  %TitlePathText% %PCpath%\%deviceFolder%\%FolderName%
 ping -n 3 127.0.0.1 > NUL
 @echo.
 echo  %DownloadingRESText%
-curl %mirror%%res% -o %PCpath%\%FolderName%\%res%.res
-if exist %PCpath%\%FolderName%\%res%.res (
+curl %mirror%%res% -o %PCpath%\%deviceFolder%\%FolderName%\%res%.res
+if exist %PCpath%\%deviceFolder%\%FolderName%\%res%.res (
 	color 2F
 	ping -n 3 127.0.0.1 > NUL
 	goto Check_Download_FT
 )
-if not exist %PCpath%\%FolderName%\%res%.res (
+if not exist %PCpath%\%deviceFolder%\%FolderName%\%res%.res (
 	color 4F
 	echo  %FailedText%
 	@echo.
@@ -734,24 +766,24 @@ if %ft%==0 (
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText% %fw%
 echo  %TitleResourcesText% %res%
 call :FT_Info
 echo  %TitleMirrorText% %mirror%
-echo  %TitlePathText% %PCpath%\%FolderName%
+echo  %TitlePathText% %PCpath%\%deviceFolder%\%FolderName%
 ping -n 3 127.0.0.1 > NUL
 @echo.
 echo  %DownloadingFTText%
-curl %mirror%%ft% -o %PCpath%\%FolderName%\%ft%.ft
-if exist %PCpath%\%FolderName%\%ft%.ft (
+curl %mirror%%ft% -o %PCpath%\%deviceFolder%\%FolderName%\%ft%.ft
+if exist %PCpath%\%deviceFolder%\%FolderName%\%ft%.ft (
 	color 2F
 	ping -n 2 127.0.0.1 > NUL
 	echo  %SuccessText%
 	ping -n 3 127.0.0.1 > NUL
 	goto OpenFolder
 )
-if not exist %PCpath%\%FolderName%\%ft%.ft (
+if not exist %PCpath%\%deviceFolder%\%FolderName%\%ft%.ft (
 	color 4F
 	echo  %FailedText%
 	@echo.
@@ -772,12 +804,16 @@ if not exist %PCpath%\%FolderName%\%ft%.ft (
 color F0
 cls
 call :Logo
-echo  %TitleDeviceText% %device%
+echo  %TitleDeviceText% %deviceTitle%
 echo  %TitleFirmwareText%
-echo  %PCpath%\%FolderName%\%fw%
+echo  %PCpath%\%deviceFolder%\%FolderName%\%fw%
 echo  %TitleResourcesText%
-echo  %PCpath%\%FolderName%\%res%.res
+echo  %PCpath%\%deviceFolder%\%FolderName%\%res%.res
 call :FT_Info
+if %ft% NEQ 0 (
+echo  %TitleFontText%
+echo  %PCpath%\%deviceFolder%\%FolderName%\%ft%
+)
 @echo.
 echo  %OpenFolderText%
 @echo.
@@ -789,7 +825,7 @@ echo  (Enter) - %UpdateText%   (A) - %AboutButtonText%
 call :Separator
 set OpenFolder=0
 set /p OpenFolder=" %InputText% "
-if /i %OpenFolder%==1 explorer.exe /select, %PCpath%\%FolderName%\%fw%, && goto NewDownload
+if /i %OpenFolder%==1 explorer.exe /select, %PCpath%\%deviceFolder%\%FolderName%\%fw%, && goto NewDownload
 if /i %OpenFolder%==2 goto NewDownload
 if /i %OpenFolder%==A call :About && goto OpenFolder
 if /i %OpenFolder%==0 goto OpenFolder
