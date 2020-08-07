@@ -5,12 +5,13 @@ set title=FWLoader by AndyER03 v1.0
 title %title%
 call :LangEN
 
-:CheckPing
-cls
+:Initialization
 call :Logo
 echo  Starting Program Initialization...
 ping -n 3 127.0.0.1 > NUL
 @echo.
+
+:CheckPing
 echo  Network initialization
 ping google.com > NUL
 if %errorlevel% EQU 0 (
@@ -19,7 +20,7 @@ if %errorlevel% EQU 0 (
 	echo  %SuccessText%
 	ping -n 3 127.0.0.1 > NUL
 	@color F0
-	goto Start
+	goto CheckAntivirus
 ) else (
 	ping -n 2 127.0.0.1 > NUL
 	color 4F
@@ -28,6 +29,30 @@ if %errorlevel% EQU 0 (
 	goto END
 )
 GoTo :EOF
+
+:CheckAntivirus
+@echo.
+echo  Checking for download permission
+curl -s https://cdn.cnbj2.fds.api.mi-img.com/huami/cinco_202001061540_1_font.bin -o %temp%\temp
+if exist %temp%\temp (
+	color 2F
+	ping -n 2 127.0.0.1 > NUL
+	del %temp%\temp
+	echo  %SuccessText%
+	ping -n 3 127.0.0.1 > NUL
+	@color F0
+	goto Start
+)
+if not exist %temp%\temp (
+	ping -n 2 127.0.0.1 > NUL
+	color 4F
+	echo  %FailedText%
+	@echo.
+	echo  Please disable antivirus and try again!
+	@echo.
+	pause
+	goto Initialization
+)
 
 :Start
 cls
