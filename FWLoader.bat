@@ -1,6 +1,6 @@
 @echo off
 @color F0
-mode con: cols=91 lines=35
+mode con: cols=85 lines=35
 set title=FWLoader by AndyER03 v1.0
 title %title%
 call :LangEN
@@ -830,15 +830,12 @@ color F0
 cls
 call :Logo
 echo  %TitleDeviceText% %deviceTitle%
-echo  %TitleFirmwareText%
-echo  %PCpath%\%deviceFolder%\%FolderName%\%fw%
-echo  %TitleResourcesText%
-echo  %PCpath%\%deviceFolder%\%FolderName%\%res%.res
-call :FT_Info
+echo  %TitleFirmwareText% %fw%
+echo  %TitleResourcesText% %res%
 if %ft% NEQ 0 (
-echo  %TitleFontText%
-echo  %PCpath%\%deviceFolder%\%FolderName%\%ft%
+	echo  %TitleFontText% %ft%
 )
+echo  %TitlePathText% %PCpath%\%deviceFolder%\%FolderName%
 @echo.
 echo  %OpenFolderText%
 @echo.
@@ -886,7 +883,7 @@ exit
 
 :LangRU
 set AboutButtonText=Ћ Їа®Ја ¬¬Ґ
-set AboutText=     FWLoader - гвЁ«Ёв  ¤«п § Јаг§ЄЁ ®дЁжЁ «м­ле Їа®иЁў®Є ¤«п ­®бЁ¬ле гбва®©бвў Xiaomi
+set AboutText=  FWLoader - гвЁ«Ёв  ¤«п § Јаг§ЄЁ ®дЁжЁ «м­ле Їа®иЁў®Є ¤«п ­®бЁ¬ле гбва®©бвў Xiaomi
 
 set BackText=Ќ § ¤
 set UpdateText=ЋЎ­®ўЁвм
@@ -932,7 +929,7 @@ GoTo :EOF
 
 :LangEN
 set AboutButtonText=About
-set AboutText=      FWLoader is a mini tool for downloading Official firmwares for Mi wear devices
+set AboutText=   FWLoader is a mini tool for downloading Official firmwares for Mi wear devices
 
 set BackText=Back
 set UpdateText=Update
@@ -977,18 +974,18 @@ GoTo :EOF
 
 
 :Separator
-echo  -----------------------------------------------------------------------------------------
+echo  -----------------------------------------------------------------------------------
 GoTo :EOF
 
 :Logo
 call :Separator
-echo             ЫЫЫЫЫЫЫ»ЫЫ»    ЫЫ»ЫЫ»      ЫЫЫЫЫЫ»  ЫЫЫЫЫ» ЫЫЫЫЫЫ» ЫЫЫЫЫЫЫ»ЫЫЫЫЫЫ» 
-echo             ЫЫЙННННјЫЫє    ЫЫєЫЫє     ЫЫЙНННЫЫ»ЫЫЙННЫЫ»ЫЫЙННЫЫ»ЫЫЙННННјЫЫЙННЫЫ»
-echo             ЫЫЫЫЫ»  ЫЫє Ы» ЫЫєЫЫє     ЫЫє   ЫЫєЫЫЫЫЫЫЫєЫЫє  ЫЫєЫЫЫЫЫ»  ЫЫЫЫЫЫЙј
-echo             ЫЫЙННј  ЫЫєЫЫЫ»ЫЫєЫЫє     ЫЫє   ЫЫєЫЫЙННЫЫєЫЫє  ЫЫєЫЫЙННј  ЫЫЙННЫЫ»
-echo             ЫЫє     ИЫЫЫЙЫЫЫЙјЫЫЫЫЫЫЫ»ИЫЫЫЫЫЫЙјЫЫє  ЫЫєЫЫЫЫЫЫЙјЫЫЫЫЫЫЫ»ЫЫє  ЫЫє
-echo             ИНј      ИННјИННј ИННННННј ИНННННј ИНј  ИНјИНННННј ИННННННјИНј  ИНј
-echo                                %title%
+echo          ЫЫЫЫЫЫЫ»ЫЫ»    ЫЫ»ЫЫ»      ЫЫЫЫЫЫ»  ЫЫЫЫЫ» ЫЫЫЫЫЫ» ЫЫЫЫЫЫЫ»ЫЫЫЫЫЫ» 
+echo          ЫЫЙННННјЫЫє    ЫЫєЫЫє     ЫЫЙНННЫЫ»ЫЫЙННЫЫ»ЫЫЙННЫЫ»ЫЫЙННННјЫЫЙННЫЫ»
+echo          ЫЫЫЫЫ»  ЫЫє Ы» ЫЫєЫЫє     ЫЫє   ЫЫєЫЫЫЫЫЫЫєЫЫє  ЫЫєЫЫЫЫЫ»  ЫЫЫЫЫЫЙј
+echo          ЫЫЙННј  ЫЫєЫЫЫ»ЫЫєЫЫє     ЫЫє   ЫЫєЫЫЙННЫЫєЫЫє  ЫЫєЫЫЙННј  ЫЫЙННЫЫ»
+echo          ЫЫє     ИЫЫЫЙЫЫЫЙјЫЫЫЫЫЫЫ»ИЫЫЫЫЫЫЙјЫЫє  ЫЫєЫЫЫЫЫЫЙјЫЫЫЫЫЫЫ»ЫЫє  ЫЫє
+echo          ИНј      ИННјИННј ИННННННј ИНННННј ИНј  ИНјИНННННј ИННННННјИНј  ИНј
+echo                             %title%
 call :Separator
 @echo.
 GoTo :EOF
