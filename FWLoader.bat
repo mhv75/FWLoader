@@ -305,8 +305,8 @@ echo  %SelectFirmwareText%
 echo   1) 1.0.5.39     11) 1.0.7.04     21) 1.0.9.34
 echo   2) 1.0.5.40     12) 1.0.7.06     22) 1.0.9.42
 echo   3) 1.0.5.48     13) 1.0.7.10     23) 1.0.9.48
-echo   4) 1.0.5.55     14) 1.0.7.14     24) 1.0.9.66
-echo   5) 1.0.5.66     15) 1.0.7.26
+echo   4) 1.0.5.55     14) 1.0.7.14     24) 1.0.9.58
+echo   5) 1.0.5.66     15) 1.0.7.26     25) 1.0.9.66
 echo   6) 1.0.6.12     16) 1.0.7.36
 echo   7) 1.0.6.16     17) 1.0.7.60
 echo   8) 1.0.6.24     18) 1.0.8.05
@@ -342,7 +342,8 @@ if /i %FirmwareSelect%==20 goto MB4_FW_1.0.9.30
 if /i %FirmwareSelect%==21 goto MB4_FW_1.0.9.34
 if /i %FirmwareSelect%==22 goto MB4_FW_1.0.9.42
 if /i %FirmwareSelect%==23 goto MB4_FW_1.0.9.48
-if /i %FirmwareSelect%==24 goto MB4_FW_1.0.9.66
+if /i %FirmwareSelect%==24 goto MB4_FW_1.0.9.58
+if /i %FirmwareSelect%==25 goto MB4_FW_1.0.9.66
 if /i %FirmwareSelect%==A call :About && goto MB4FileSelect
 if /i %FirmwareSelect%==0 goto MB4FileSelect
 if /i %FirmwareSelect%==B goto DeviceSelect
@@ -506,6 +507,13 @@ goto MirrorSelect
 set FolderName=cinco_1.0.9.48
 set fw=cinco_202004271040_1.0.9.48_cinco.fw
 set res=cinco_202004271040_v93_res.pack.bin
+set ft=cinco_202001061540_1_font.bin
+goto MirrorSelect
+
+:MB4_FW_1.0.9.58
+set FolderName=cinco_1.0.9.58
+set fw=cinco_202005192024_1.0.9.58_cinco.fw
+set res=cinco_202005192024_v96_res.pack.bin
 set ft=cinco_202001061540_1_font.bin
 goto MirrorSelect
 
